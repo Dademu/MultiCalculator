@@ -72,6 +72,11 @@ fun CalcDisplay() {
 }
 
 @Composable
+fun CalcEqualsButton() {
+
+}
+
+@Composable
 fun GreetingView(text: String) {
     Text(text = text)
 }
