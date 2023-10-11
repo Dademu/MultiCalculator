@@ -85,8 +85,16 @@ fun CalcNumeric(display: MutableState<String>) {
         Text(text = "=")
     }
 }
+@Composable
 fun CalcOperation(display: MutableState<String>) {
-
+    Button(
+        onClick = {
+            display.value = "0"
+        },
+        modifier = Modifier.padding(4.dp)
+    ) {
+        Text(text = "=")
+    }
 }
 
 @Composable
