@@ -85,6 +85,9 @@ fun CalcNumeric(display: MutableState<String>) {
         Text(text = "=")
     }
 }
+fun CalcOperation(display: MutableState<String>) {
+
+}
 
 @Composable
 fun CalcEqualsButton(display: MutableState<String>) {
