@@ -70,7 +70,7 @@ fun CalcRow() {
 }
 
 @Composable
-fun CalcDisplay() {
+fun CalcDisplay(display: MutableState<String>) {
 
 }
 
@@ -108,8 +108,6 @@ fun CalcEqualsButton(display: MutableState<String>) {
         Text(text = "=")
     }
 }
-
-
 
 @Composable
 fun GreetingView(text: String) {
