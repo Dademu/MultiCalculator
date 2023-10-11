@@ -79,12 +79,21 @@ fun CalcView() {
         modifier = Modifier.fillMaxSize().background(Color.LightGray)
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
-            CalcDisplay()
+            CalcDisplay(displayText)
         }
         Row(modifier = Modifier.fillMaxSize()) {
             Column {
                 for (i in 7 downTo 1 step 3) {
                     CalcRow(i, 3, displayText)
+                }
+            }
+            Column {
+                for (i in 7 downTo 1 step 3) {
+                    CalcRow(i, 3, displayText)
+                }
+                Row {
+                    CalcNumericButton(0, displayText)
+                    CalcEqualsButton(displayText)
                 }
             }
             Column {
@@ -95,11 +104,10 @@ fun CalcView() {
             }
         }
     }
-
 }
 
 @Composable
-fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
+fun CalcRow(display: Int, startNum: Int, numButtons: Int) {
     var endNum = startNum + numButtons;
 
     Row(modifier = Modifier.padding(0.dp)) {
@@ -110,7 +118,7 @@ fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
 }
 
 @Composable
-fun CalcDisplay() {
+fun CalcDisplay(displayText: String) {
     Text(
         text = display.value,
         modifier = Modifier
@@ -122,7 +130,7 @@ fun CalcDisplay() {
 }
 
 @Composable
-fun CalcNumericButton(display: MutableState<String>, number: Int) {
+fun CalcNumericButton(display: Int, number: Int) {
     Button(
         onClick = {
             display.value = "0"
