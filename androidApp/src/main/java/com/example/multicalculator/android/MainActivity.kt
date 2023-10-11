@@ -75,6 +75,11 @@ fun CalcDisplay() {
 }
 
 @Composable
+fun CalcNumeric() {
+
+}
+
+@Composable
 fun CalcEqualsButton(display: MutableState<String>) {
     Button(
         onClick = {
@@ -85,6 +90,8 @@ fun CalcEqualsButton(display: MutableState<String>) {
         Text(text = "=")
     }
 }
+
+
 
 @Composable
 fun GreetingView(text: String) {
