@@ -69,8 +69,8 @@ fun CalcView() {
 }
 
 @Composable
-fun CalcRow(display: MutableState<String>) {
-
+fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
+    var endNum = startNum + numButtons;
 }
 
 @Composable
