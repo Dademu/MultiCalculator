@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.multicalculator.Greeting
 import java.util.Locale
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,15 @@ fun main() {
         while (readlnOrNull()?.lowercase(Locale.getDefault()) == "yes")
 }
 
+@Composable
+fun CalcView() {
+
+}
+
+@Composable
+fun CalcRow() {
+
+}
 
 @Composable
 fun GreetingView(text: String) {
