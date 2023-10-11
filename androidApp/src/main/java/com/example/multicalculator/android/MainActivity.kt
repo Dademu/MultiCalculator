@@ -73,41 +73,38 @@ fun main() {
 
 @Composable
 fun CalcView() {
-    var displayText by remember { mutableStateOf("0") }
+    var displayText = remember { mutableStateOf("0") }
 
     Column(
-        modifier = Modifier.fillMaxSize().background(Color.LightGray)
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.LightGray)
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
-            CalcDisplay(displayText)
+            CalcDisplay()
         }
         Row(modifier = Modifier.fillMaxSize()) {
             Column {
                 for (i in 7 downTo 1 step 3) {
-                    CalcRow(i, 3, displayText)
-                }
-            }
-            Column {
-                for (i in 7 downTo 1 step 3) {
-                    CalcRow(i, 3, displayText)
+                    CalcRow(displayText, i, 3)
                 }
                 Row {
-                    CalcNumericButton(0, displayText)
+                    CalcNumericButton(displayText, 0)
                     CalcEqualsButton(displayText)
                 }
             }
             Column {
-                CalcOperationButton("+", displayText)
-                CalcOperationButton("-", displayText)
-                CalcOperationButton("*", displayText)
-                CalcOperationButton("/", displayText)
+                CalcOperationButton(displayText, "+")
+                CalcOperationButton(displayText, "-")
+                CalcOperationButton(displayText, "*" )
+                CalcOperationButton(displayText, "/" )
             }
         }
     }
 }
 
 @Composable
-fun CalcRow(display: Int, startNum: Int, numButtons: Int) {
+fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
     var endNum = startNum + numButtons;
 
     Row(modifier = Modifier.padding(0.dp)) {
@@ -118,7 +115,7 @@ fun CalcRow(display: Int, startNum: Int, numButtons: Int) {
 }
 
 @Composable
-fun CalcDisplay(displayText: String) {
+fun CalcDisplay() {
     Text(
         text = display.value,
         modifier = Modifier
@@ -130,7 +127,7 @@ fun CalcDisplay(displayText: String) {
 }
 
 @Composable
-fun CalcNumericButton(display: Int, number: Int) {
+fun CalcNumericButton(display: MutableState<String>, number: Int) {
     Button(
         onClick = {
             display.value = "0"
