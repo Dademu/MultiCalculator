@@ -4,13 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.multicalculator.Greeting
 import java.util.Locale
 
@@ -71,7 +75,14 @@ fun CalcRow() {
 
 @Composable
 fun CalcDisplay(display: MutableState<String>) {
-
+    Text(
+        text = display.value,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(50.dp)
+            .padding(5.dp),
+        style = TextStyle(fontSize = 20.sp)
+    )
 }
 
 @Composable
