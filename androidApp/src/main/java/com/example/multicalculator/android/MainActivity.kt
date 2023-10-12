@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.multicalculator.Greeting
@@ -71,7 +73,7 @@ fun main() {
 
 @Composable
 fun CalcView() {
-    var displayText = remember { mutableStateOf("0") }
+    val displayText = remember { mutableStateOf("0") }
 
     Column(
         modifier = Modifier
@@ -103,36 +105,35 @@ fun CalcView() {
 
 @Composable
 fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
-    var endNum = startNum + numButtons
+    val endNum = startNum + numButtons
 
     Row(modifier = Modifier.padding(0.dp)) {
         for (i in startNum until endNum) {
-            CalcNumericButton(number = i, display = display)
+            CalcNumericButton(display, i)
         }
     }
 }
 
 @Composable
 fun CalcDisplay(display: MutableState<String>) {
+    val bwdt = 4.dp
     Text(
         text = display.value,
         modifier = Modifier
             .fillMaxWidth()
             .height(50.dp)
             .padding(5.dp),
-        style = TextStyle(fontSize = 20.sp)
+        style = TextStyle(fontSize = 24.sp),
     )
 }
 
 @Composable
 fun CalcNumericButton(display: MutableState<String>, number: Int) {
     Button(
-        onClick = {
-            display.value = "0"
-        },
+        onClick = { "{$display.value} + {$number}"},
         modifier = Modifier.padding(4.dp)
     ) {
-        Text(text = "1")
+        Text(text = "$number")
     }
 }
 @Composable
@@ -143,7 +144,7 @@ fun CalcOperationButton(display: MutableState<String>, operation: String) {
         },
         modifier = Modifier.padding(4.dp)
     ) {
-        Text(text = "=")
+        Text(text = operation)
     }
 }
 
