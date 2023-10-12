@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.multicalculator.android"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         applicationId = "com.example.multicalculator.android"
         minSdk = 24
