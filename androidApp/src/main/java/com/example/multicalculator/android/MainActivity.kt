@@ -116,7 +116,6 @@ fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
 
 @Composable
 fun CalcDisplay(display: MutableState<String>) {
-    val bwdt = 4.dp
     Text(
         text = display.value,
         modifier = Modifier
