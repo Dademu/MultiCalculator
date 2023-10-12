@@ -13,10 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -81,7 +79,7 @@ fun CalcView() {
             .background(Color.LightGray)
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
-            CalcDisplay()
+            CalcDisplay(displayText)
         }
         Row(modifier = Modifier.fillMaxSize()) {
             Column {
@@ -115,7 +113,7 @@ fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int) {
 }
 
 @Composable
-fun CalcDisplay() {
+fun CalcDisplay(display: MutableState<String>) {
     Text(
         text = display.value,
         modifier = Modifier
@@ -138,7 +136,7 @@ fun CalcNumericButton(display: MutableState<String>, number: Int) {
     }
 }
 @Composable
-fun CalcOperationButton(display: MutableState<String>) {
+fun CalcOperationButton(display: MutableState<String>, s: String) {
     Button(
         onClick = {
             display.value = "0"
